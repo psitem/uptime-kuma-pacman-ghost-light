@@ -64,5 +64,4 @@ Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 
 https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94-68ad-44a3-9a49-f24b3292df82
 
 ##### Test rig:
-
-![Development rig](/images/picow-test-setup.jpg?raw=true)
+![Test setup with Pico W](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/cf1119aa-5878-41fa-96da-d2a0e75dbe5c)
