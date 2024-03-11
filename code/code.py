@@ -1,5 +1,5 @@
 ### 
-### There is configuration that must be done in the settings.py and 
+### There is configuration that MUST be done in the settings.py and 
 ### settings.toml files. Consult the README for more information.
 ###
 
