@@ -1,0 +1,13 @@
+# URL to retrieve Uptime Kuma Prometheus metrics. Should end in /metrics
+METRICS_URL = "http://something/metrics"
+
+# API token for Uptime Kuma. Needed if authentication is enabled.
+# API_TOKEN = ""
+
+# WiFi information.
+CIRCUITPY_WIFI_SSID = ""
+CIRCUITPY_WIFI_PASSWORD = ""
+
+# CircuitPythong Web workflow information.
+# CIRCUITPY_WEB_API_PASSWORD = ""
+# CIRCUITPY_WEB_API_PORT = 80
