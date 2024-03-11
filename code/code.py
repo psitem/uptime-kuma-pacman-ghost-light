@@ -52,6 +52,7 @@ from base64 import b64encode
 # The RegEx where the magic happens.
 reobj=re.compile('^(?:monitor_status{.*}\s)(\d)')
 
+# Colors
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
@@ -61,12 +62,6 @@ PURPLE = (180, 0, 255)
 ORANGE = (255, 128, 0)
 WHITE = (255,255,255)
 OFF = (0,0,0)
-
-color_NoWifi = BLUE
-color_Unreachable = ORANGE
-color_Down = RED
-color_Up = GREEN
-color_Pending = YELLOW
 
 body_pixels = None
 eye_pixels = None
@@ -134,9 +129,9 @@ def action_Booting():
     pass
 
 def action_NoWifi():
-    if (use_eye_pixels):
+    if ( use_eye_pixels ):
         eye_pixels.fill(RED)
-    elif (use_body_pixels):
+    elif ( use_body_pixels ):
         body_pixels.fill(BLUE)
     time.sleep(2)
 
@@ -144,7 +139,7 @@ def action_HaveWifi():
     if ( (use_eye_pixels) and (use_body_pixels) ):
         eye_pixels.fill(WHITE)
         body_pixels.fill(WHITE)
-    elif (use_eye_pixels):
+    elif ( use_eye_pixels ):
         eye_pixels.fill(WHITE)
     elif (use_body_pixels):
         body_pixels.fill(PURPLE)
@@ -154,28 +149,28 @@ def action_HaveWifi():
 def action_Unreachable():
     if ( (use_eye_pixels) and (use_body_pixels) ):
         eye_pixels.fill(ORANGE)
-    if (use_body_pixels):
+    if ( use_body_pixels ):
         body_pixels.fill(ORANGE)
     time.sleep(2)
 
 def action_Pending():
-    if (use_eye_pixels):
+    if ( use_eye_pixels ):
         eye_pixels.fill(WHITE)
-    if (use_body_pixels):
+    if ( use_body_pixels ):
         body_pixels.fill(YELLOW)
     time.sleep(2)
 
 def action_Outage():
-    if (use_eye_pixels):
+    if ( use_eye_pixels ):
         eye_pixels.fill(WHITE)
-    if (use_body_pixels):
+    if ( use_body_pixels ):
         body_pixels.fill(RED)
     time.sleep(2)
 
 def action_Up():
-    if (use_eye_pixels):
+    if ( use_eye_pixels ):
         eye_pixels.fill(WHITE)
-    if (use_body_pixels):
+    if ( use_body_pixels ):
         body_pixels.fill(GREEN)
     time.sleep(2)
 
@@ -234,15 +229,15 @@ while ( loop_light_states ):
     action_Up()
 
     time.sleep(3)
-    if (use_body_pixels):
+    if ( use_body_pixels ):
         body_pixels.fill(OFF)
-    if (use_eye_pixels):
+    if ( use_eye_pixels ):
         eye_pixels.fill(OFF)
     time.sleep(3)
 
 action_Booting()
 
-while (True):
+while ( True ):
     ssid = os.getenv("CIRCUITPY_WIFI_SSID")
     password = os.getenv("CIRCUITPY_WIFI_PASSWORD")
 
@@ -255,8 +250,6 @@ while (True):
         if ( wifiloopcount > 24 ):
             supervisor.reload()
 
-        # if ( use_body_pixels):
-        #     body_pixels.fill(color_NoWifi)
         action_NoWifi()
 
         try:
@@ -291,10 +284,7 @@ while (True):
         if ( loopcount > 5 ):
             supervisor.reload()
 
-        # if ( (loopcount > 2) and (use_body_pixels) ):
-        #     body_pixels.fill(color_Unreachable)
-
-        if (loopcount > 2):
+        if ( loopcount > 2 ):
             action_Unreachable()
 
         dt = rtc.RTC().datetime
@@ -308,8 +298,6 @@ while (True):
             wifiloopcount += 1
             if ( wifiloopcount > 5 ):
                 supervisor.reload()
-            # if ( use_body_pixels):
-            #     body_pixels.fill(color_NoWifi)
             action_NoWifi()
             try:
                 if ( wifiloopcount > 1 ):
@@ -333,14 +321,12 @@ while (True):
             response = requests.get(metrics_url, headers=headers, timeout=interval_timeout)
             respcode = response.status_code
             if ( respcode != 200 ):
-                print( "Time:       " + f'{hour:02d} {minutes:02d} {seconds:02d}' )
-                print( "Status: " + f'{respcode:>12}' )
-                print( "Loopcount: " + f'{loopcount:>9}' )
-                print( "Memory free: " + f'{gc.mem_free():>7}' )
+                print("Time:       " + f'{hour:02d} {minutes:02d} {seconds:02d}')
+                print("Status: " + f'{respcode:>12}')
+                print("Loopcount: " + f'{loopcount:>9}')
+                print("Memory free: " + f'{gc.mem_free():>7}')
                 response.close()
 
-                # if ( (use_body_pixels) and (loopcount > 1) ):
-                #     body_pixels.fill(color_Unreachable)
                 if ( loopcount > 1 ):
                     action_Unreachable()
 
@@ -352,47 +338,40 @@ while (True):
                     ## HELP monitor_status Monitor Status (1 = UP, 0= DOWN, 2= PENDING, 3= MAINTENANCE)
                     ## monitor_status{monitor_name="name",monitor_type="http",monitor_url="http://mynameisurl",monitor_hostname="null",monitor_port="null"} 1
                     res = reobj.match(line)
-                    if (res):
-                        if res.group(1) == '0':
+                    if ( res ):
+                        if ( res.group(1) == '0' ):
                             downcount += 1
-                        elif res.group(1) == '1':
+                        elif ( res.group(1) == '1' ):
                             upcount += 1
-                        elif res.group(1) == '2':
+                        elif ( res.group(1) == '2' ):
                             pendingcount += 1
-                        elif res.group(1) == '3':
+                        elif ( res.group(1) == '3' ):
                             maintenancecount += 1
                         else:
                             # print(res.group(1))
                             pass
 
-                print( "" )
-                #print( f'{hour:02d} {minutes:02d} {seconds:02d}' + "  " + str(loopcount)  + "  " + f'{gc.mem_free():>7}')
-                print( "Loopcount: " + f'{loopcount:>9}' )
-                print( "Memory free: " + f'{gc.mem_free():>7}' )
+                print("")
+                print("Loopcount: " + f'{loopcount:>9}')
+                print("Memory free: " + f'{gc.mem_free():>7}')
                 
-                print( f'{hour:02d} {minutes:02d} {seconds:02d}' + "           " + str(loopcount))
-                print( "Up: " + str(upcount) )
-                print( "Down: " + str(downcount) )
-                print( "Pending: " + str(pendingcount) )
-                print( "Maintenance: " + str(maintenancecount) )
+                print(f'{hour:02d} {minutes:02d} {seconds:02d}' + "           " + str(loopcount))
+                print("Up: " + str(upcount))
+                print("Down: " + str(downcount))
+                print("Pending: " + str(pendingcount))
+                print("Maintenance: " + str(maintenancecount))
 
                 loopcount = 0
 
                 if ( downcount > 0 ):
-                    # if (use_body_pixels):
-                    #     body_pixels.fill(color_Down)
                     action_Outage()
                 elif ( pendingcount > 0 ):
-                    # if (use_body_pixels):
-                    #     body_pixels.fill(color_Pending)
                     action_Pending()
                 else:
-                    # if (use_body_pixels):
-                    #     body_pixels.fill(color_Up)
                     action_Up()
        
         except Exception as e:
-            print( f'{hour:02d} {minutes:02d} {seconds:02d}' + "   " + str(loopcount)  + " " + f'{gc.mem_free():>7}')
+            print(f'{hour:02d} {minutes:02d} {seconds:02d}' + "   " + str(loopcount)  + " " + f'{gc.mem_free():>7}')
             print(e)
             e = None
 
@@ -406,9 +385,6 @@ while (True):
             response = None
             requests = None
 
-            # if ( loopcount > 5 ):
-            #     sys.exit()
-            
         resptxt = None
         response = None
         requests = None
