@@ -1,3 +1,8 @@
+### 
+### There is configuration that must be done in the settings.py and 
+### settings.toml files. Consult the README for more information.
+###
+
 import os
 import board
 import busio

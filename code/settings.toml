@@ -1,3 +1,9 @@
+###
+### At minimum you must configure METRICS_URL, CIRCUITPY_WIFI_SSID, and
+### CIRCUITPY_WIFI_PASSWORD or else this won't do anything. Consult the
+### README for more information on these settings and settings.py
+###
+
 # URL to retrieve Uptime Kuma Prometheus metrics. Should end in /metrics
 METRICS_URL = "http://something/metrics"
 

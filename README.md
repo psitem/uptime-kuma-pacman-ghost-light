@@ -78,7 +78,7 @@ There are a series of functions prefixed with `action_` which control the LED st
 * `action_Outage:` Some Uptime Kuma monitors are in the Outage state.
 * `action_Up:` All Uptime Kuma monitors are Up.
 
-For testing purposes, set `loop_light_states = True` to infinitely loop through the color states.
+For testing purposes, set `loop_light_states = True` in `settings.py` to infinitely loop through the color states.
 
 #### Constructing:
 

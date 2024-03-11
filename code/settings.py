@@ -1,3 +1,12 @@
+###
+### You must configure some combination of pixels or display, else this won't do anything
+### but output information to the serial port. Consult the README for more information on
+### these settings and settings.toml
+###
+
+import os
+import board
+
 # URL for /metrics on your Uptime Kuma instance.
 metrics_url = os.getenv("METRICS_URL")
 
