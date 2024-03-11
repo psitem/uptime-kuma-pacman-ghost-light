@@ -82,11 +82,9 @@ For testing purposes, set `loop_light_states = True` to infinitely loop through 
 
 #### Constructing:
 
-Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing, and this is my first completed small electronics / CircuitPython project. The Pacman Ghost easily comes apart with four screws on the back and a bit of prying to release the tabs. Stripping out the guts is a couple more screws. My current incarnation runs an ESP-C3-13-Kit, uses 9 RGB LEDs for the body, attached to a few 170-point solderless breadboards stuck to the back. For the eyes I had to file the holes and surface a bit for a good-ish fit and hot glued the RGB LEDs in place.
+Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing, and this is my first completed small electronics / CircuitPython project. The Pacman Ghost easily comes apart with four screws on the back and a bit of prying to release the tabs. Stripping out the guts is a couple more screws. My original proof-of-concept version used a Pico W, 5 RGB LEDs for the body, and recycled the white LEDs for the eyes (always on). My current incarnation runs an ESP-C3-13-Kit, uses 9 RGB LEDs for the body, attached to a few 170-point solderless breadboards stuck to the back. For the eyes I had to file the holes and surface a bit for a good-ish fit and hot glued the RGB LEDs in place.
 
-My original proof-of-concept version used a Pico W, 5 RGB LEDs for the body, and recycled the white LEDs for the eyes (always on).
-
-![pacghost-construction](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/0ee3dd5a-2fd9-4adf-ad54-b71aa3c7dfbf)
+![Pacman Ghost under construction](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/0ee3dd5a-2fd9-4adf-ad54-b71aa3c7dfbf)
 
 #### My test rig:
 
