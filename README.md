@@ -10,11 +10,16 @@ This is the [CircuitPython](https://circuitpython.org/) code used to build a [Pa
   - CircuitPython 8.x.
   - Compatibled board.
   - Adafruit NeoPixel-compatible RGB LEDs (ie: [WS2812b](https://amzn.to/43dU3Vh)).
+  - [Uptime Kuma](https://uptime.kuma.pet/).
+
+All necessary CircuitPython libraries are included in the `code/lib` directory.
+
+Anything that runs CircuitPython and provides W-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using the optional display). My development setup was on an [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) but deployed it with an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG) board — that particular ESP board seems to be unobainium today but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) boards are probably equivalent.
 
 #### Optional:
   - [SSD1306-compatible display](https://amzn.to/48IWCA0).
 
-Anything that runs CircuitPython and provides W-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using the display). My development setup was on an [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) but deployed it with an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG) board — that particular ESP board seems to be unobainium today but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) boards are probably equivalent.
+Note that the included `adafruit_displayio_ssd1306` library has been modified at line 57 to increase the scan rate.
 
 #### Installation:
 
@@ -56,8 +61,6 @@ LCD settings:
 * `use_display =` [ True | False ]
 * `scl_pin =` GPIO to use for i2c SCL
 * `sda_pin =` GPIO to use for i2c SDA
-
-Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 57 to increase the scan rate.
 
 #### Demo:
 
