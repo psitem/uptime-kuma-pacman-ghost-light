@@ -1,0 +1,8 @@
+template:
+  - binary_sensor:
+      - name: sensor.uptimekuma_summary
+        state: >
+          {{
+            state_attr('sensor.uptimekuma_instance_1', 'monitors_down') == 0
+            and state_attr('sensor.uptimekuma_instance_2', 'monitors_down') == 0
+          }}
