@@ -14,12 +14,10 @@ This is the [CircuitPython](https://circuitpython.org/) code used to build a [Pa
 
 All necessary CircuitPython libraries are included in the `code/lib` directory.
 
-Anything that runs CircuitPython and provides W-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using the optional display). My development setup was on an [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) but deployed it with an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG) board — that particular ESP board seems to be unobainium today but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) boards are probably equivalent.
-
 #### Optional:
   - [SSD1306-compatible display](https://amzn.to/48IWCA0).
 
-Note that the included `adafruit_displayio_ssd1306` library has been modified at line 57 to increase the scan rate.
+Anything that runs CircuitPython and provides W-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using the display). My development setup was on an [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) but deployed it with an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG) board — that particular ESP board seems to be unobainium today but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) boards appear to be equivalent and are breadboard-friendly in width.
 
 #### Installation:
 
@@ -61,6 +59,28 @@ LCD settings:
 * `use_display =` [ True | False ]
 * `scl_pin =` GPIO to use for i2c SCL
 * `sda_pin =` GPIO to use for i2c SDA
+
+Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 57 to increase the scan rate.
+
+#### Constructing:
+
+Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing. My current incarnation uses 8 RGB LEDs for the body and one for each eye, running on an ESP-C3-13-Kit board. My original version running ESPHome uses 5 RGB LEDs for the body, recycled the original eye LEDs (permanently on), and runs on a Raspberry Pi Pico W board.
+
+I recommend against using the Pico W as CircuitPython as of 8.2.10 does not seem to detect that the Wi-Fi has disconnected (`wifi.radio.connected` is always `True` once it has initially associated). 
+
+#### Modifying:
+
+There are a series of functions prefixed with `action_` which control the LED states:
+
+* `action_Booting:` Startup.
+* `action_NoWifi:` Wi-Fi not yet connected.
+* `action_HaveWifi:` Wi-Fi has connection.
+* `action_Unreachable:` Uptime Kuma unreachable / non-responsive.
+* `action_Pending:` Some Uptime Kuma monitors are in the Pending state.
+* `action_Outage:` Some Uptime Kuma monitors are in the Outage state.
+* `action_Up:` All Uptime Kuma monitors are Up.
+
+For testing purposes, set `loop_light_states = True` to infinitely loop through the color states.
 
 #### Demo:
 
