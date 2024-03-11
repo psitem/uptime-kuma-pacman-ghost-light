@@ -60,9 +60,9 @@ Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 
 #### Demo:
 
 <p align="center">
-<video src="https://github.com/psitem/uptime-kuma-pacman-ghost-light/blob/main/images/pacghost-light-states.mov?raw=true" width="300" />
+<video src="/images/pacghost-light-states.mov?raw=true" width="300" />
 </p>
 
 <p align="center">
-![Pacman Ghost cycling through light states](https://github.com/psitem/uptime-kuma-pacman-ghost-light/blob/main/images/picow-test-setup.jpg.jpg?raw=true)
+![Pacman Ghost cycling through light states](/images/picow-test-setup.jpg?raw=true)
 </p>
