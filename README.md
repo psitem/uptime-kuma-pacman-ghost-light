@@ -13,15 +13,17 @@ https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94
 ##
 
 #### Requirements: 
+  - [Uptime Kuma](https://uptime.kuma.pet/).
   - CircuitPython 8.x.
   - Compatibled board.
   - Adafruit NeoPixel-compatible RGB LEDs (ie: [WS2812b](https://amzn.to/43dU3Vh)).
-  - [Uptime Kuma](https://uptime.kuma.pet/).
 
 All necessary CircuitPython libraries are included in the `code/lib` directory.
 
 #### Optional:
   - [SSD1306-compatible display](https://amzn.to/48IWCA0).
+
+Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 57 to increase the scan rate.
 
 Anything that runs CircuitPython and provides W-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using the display). My development setup was on an [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) but deployed it with an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG) board — that particular ESP board seems to be unobainium today but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) boards appear to be equivalent and are breadboard-friendly in width.
 
@@ -40,9 +42,7 @@ Copy everything from the `code/` directory to the CircuitPython root.
 * `CIRCUITPY_WEB_API_PORT =` Set to use the CircuitPython Web Workflow (ie: if your board doesn't support the "CIRCUITPY" drive).
 * `CIRCUITPY_WEB_API_PASSWORD =` Password for the CircuitPython Web Workflow (optional).
 
-`code.py`:
-
-Look for the part near the top that says Configuration Section.
+`settings.py`:
 
 General settings:
 * `interval_refresh =` How often to check Uptime Kuma (in seconds).
@@ -65,8 +65,6 @@ LCD settings:
 * `use_display =` [ True | False ]
 * `scl_pin =` GPIO to use for i2c SCL
 * `sda_pin =` GPIO to use for i2c SDA
-
-Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 57 to increase the scan rate.
 
 #### Modifying:
 
