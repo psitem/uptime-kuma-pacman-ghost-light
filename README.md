@@ -84,6 +84,8 @@ For testing purposes, set `loop_light_states = True` to infinitely loop through 
 
 #### Demo:
 
+My iPhone camera does not accurately capture the colors, they skew very blue and yellow/orange are difficult to distinguish. 
+
 ##### Pacman Ghost cycling through the light states:
 
 https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94-68ad-44a3-9a49-f24b3292df82
