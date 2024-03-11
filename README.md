@@ -86,6 +86,10 @@ Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly,
 
 ![Pacman Ghost under construction](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/0ee3dd5a-2fd9-4adf-ad54-b71aa3c7dfbf)
 
+![Pico W Wiring Diagram](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/e66fac33-dd3e-45d9-9b9c-6ba7acb6f324)
+
+![ESP32-C3 Wiring Diagram](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/0f84094e-3c07-4356-9db0-6c50a3856b11)
+
 #### My test rig:
 
 With a screen for debugging, two "eye" and three "body" LEDs.
