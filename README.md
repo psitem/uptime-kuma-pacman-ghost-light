@@ -90,6 +90,8 @@ I recommend against using the Pico W as CircuitPython as of 8.2.10 does not seem
 
 #### My test rig:
 
+With a screen for debugging, two "eye" and three "body" LEDs.
+
 ![Test setup with Pico W](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/cf1119aa-5878-41fa-96da-d2a0e75dbe5c)
 
 (My iPhone camera does not accurately capture the LED colors)
