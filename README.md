@@ -4,6 +4,12 @@ This is the [CircuitPython](https://circuitpython.org/) code used to build a [Pa
 
 ![Paladone Pacman Ghost Light](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/01f93dea-0421-4b2c-8a7d-51fc4c953045)
 
+##### Demo of Pacman Ghost Light cycling through the light states:
+
+https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94-68ad-44a3-9a49-f24b3292df82
+
+(My iPhone camera does not accurately capture the colors)
+
 ##
 
 #### Requirements: 
@@ -62,12 +68,6 @@ LCD settings:
 
 Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 57 to increase the scan rate.
 
-#### Constructing:
-
-Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing. My current incarnation uses 8 RGB LEDs for the body and one for each eye, running on an ESP-C3-13-Kit board. My original version running ESPHome uses 5 RGB LEDs for the body, recycled the original eye LEDs (permanently on), and runs on a Raspberry Pi Pico W board.
-
-I recommend against using the Pico W as CircuitPython as of 8.2.10 does not seem to detect that the Wi-Fi has disconnected (`wifi.radio.connected` is always `True` once it has initially associated). 
-
 #### Modifying:
 
 There are a series of functions prefixed with `action_` which control the LED states:
@@ -82,13 +82,14 @@ There are a series of functions prefixed with `action_` which control the LED st
 
 For testing purposes, set `loop_light_states = True` to infinitely loop through the color states.
 
-#### Demo:
+#### Constructing:
 
-My iPhone camera does not accurately capture the colors, they skew very blue and yellow/orange are difficult to distinguish. 
+Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing. My current incarnation uses 8 RGB LEDs for the body and one for each eye, running on an ESP-C3-13-Kit board. My original version running ESPHome uses 5 RGB LEDs for the body, recycled the original eye LEDs (permanently on), and runs on a Raspberry Pi Pico W board.
 
-##### Pacman Ghost cycling through the light states:
+I recommend against using the Pico W as CircuitPython as of 8.2.10 does not seem to detect that the Wi-Fi has disconnected (`wifi.radio.connected` is always `True` once it has initially associated). 
 
-https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94-68ad-44a3-9a49-f24b3292df82
+#### My test rig:
 
-##### Test rig:
 ![Test setup with Pico W](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/cf1119aa-5878-41fa-96da-d2a0e75dbe5c)
+
+(My iPhone camera does not accurately capture the LED colors)
