@@ -2,9 +2,7 @@
 
 This is the [CircuitPython](https://circuitpython.org/) code used to build a [Paladone Pac-Man Ghost Light](https://amzn.to/49Cp8EF) whose lights adjust based on the status of monitors in [Uptime Kuma](https://uptime.kuma.pet/).
 
-<p align="center">
 ![Paladone Pacman Ghost Light](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/01f93dea-0421-4b2c-8a7d-51fc4c953045)
-</p>
 
 ##
 
@@ -90,11 +88,7 @@ My iPhone camera does not accurately capture the colors, they skew very blue and
 
 ##### Pacman Ghost cycling through the light states:
 
-<p align="center">
 https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94-68ad-44a3-9a49-f24b3292df82
-</p>
 
 ##### Test rig:
-<p align="center">
 ![Test setup with Pico W](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/cf1119aa-5878-41fa-96da-d2a0e75dbe5c)
-</p>
