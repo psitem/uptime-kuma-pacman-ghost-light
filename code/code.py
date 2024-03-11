@@ -57,8 +57,8 @@ if ( not 'eye_pixels_brightness' in globals() ):
     eye_pixels_brightness = 0
 if ( not 'eye_pixels_count' in globals() ):
     eye_pixels_count = 0
-if ( not 'use_pixels' in globals() ):
-    eye_use_pixels = False
+if ( not 'use_eye_pixels' in globals() ):
+    use_eye_pixels = False
     eye_pixels = None
 if ( use_eye_pixels ):
     if ( not 'eye_pixels_brightness' in globals() ):
@@ -77,9 +77,12 @@ if ( not 'metrics_url' in globals() ):
     metrics_url = None
 
 if ( ('api_token' in globals()) ):
-    auth_credentials = ":" + api_token
-    auth_token = b64encode(auth_credentials.encode("utf-8")).decode("ascii")
-    headers = {'Authorization': 'Basic ' + auth_token}
+    if ( (api_token is not None ) ):
+        auth_credentials = ":" + api_token
+        auth_token = b64encode(auth_credentials.encode("utf-8")).decode("ascii")
+        headers = {'Authorization': 'Basic ' + auth_token}
+    else:
+        headers = {'Authorization': 'None'}
 else:
     headers = {'Authorization': 'None'}
 
