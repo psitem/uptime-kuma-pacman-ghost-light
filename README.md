@@ -59,10 +59,10 @@ Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 
 
 #### Demo:
 
-<p align="center">
-<video src="/images/pacghost-light-states.mov?raw=true" width="300" />
-</p>
+##### Pacman Ghost cycling through the light states:
 
-<p align="center">
-![Pacman Ghost cycling through light states](/images/picow-test-setup.jpg?raw=true)
-</p>
+![](/images/pacghost-light-states.mp4?raw=true)
+
+##### Test rig:
+
+![Development rig](/images/picow-test-setup.jpg?raw=true)
