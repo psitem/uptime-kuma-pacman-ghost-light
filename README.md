@@ -14,22 +14,22 @@ https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/a5622c94
 
 #### Requirements: 
   - [Uptime Kuma](https://uptime.kuma.pet/).
-  - CircuitPython 8.x.
-  - Compatible board.
+  - [CircuitPython](https://circuitpython.org/) 8.x.
+  - [Compatible board with Wi-Fi](https://circuitpython.org/downloads?features=Wi-Fi).
   - Adafruit NeoPixel-compatible RGB LEDs (ie: [WS2812b](https://amzn.to/43dU3Vh)).
-
-All necessary CircuitPython libraries are included in the `code/lib` directory.
 
 #### Optional:
   - [SSD1306-compatible 128x64 display](https://amzn.to/48IWCA0).
 
-Note: The `lib/adafruit_displayio_ssd1306.py` library has been modified at line 57 to increase the scan rate. Should that not work for your display, you can revert the modification or drop in the original from [Adafruit's CircuitPython Bundle](https://github.com/adafruit/Adafruit_CircuitPython_Bundle).
+Any supported CircuitPython board that provides Wi-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using a typical SSD1306 display). I've personally used this on a [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) and [ESP-C3-13-Kit](https://amzn.to/3wOrRMG). In my general experience, ESP32 boards have better Wi-Fi reliabilitiy than the Pico W. With CircuitPython on the Pico W the Wi-Fi library as of v8.2.10 does not change `wifi.radio.connected` to `False` when a Wi-Fi connection becomes unavailable until the radio or board is reset — on the ESP32-C3 it works as expected.
 
-Any board that runs CircuitPython and provides W-Fi, 5v, and 2 pins of GPIO ought to work (plus 3v3 and i2c if using an SSD1306 display). My development setup was on an [Raspberry Pi Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w) but deployed it with an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG) board — that particular ESP board seems to be unobainium today but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) boards appear to be equivalent and are breadboard-friendly in width.
+The specific ESP32-C3 board I've used does not seem to be available to purchase anywhere any more, but the [ESP-C3-12F-Kit](https://amzn.to/3PgFWsz) appears to be equivalent and of breadboard-friendly width.
 
 #### Installation:
 
-Copy everything from the `code/` directory to the CircuitPython root.
+Copy everything from the `code/` directory to the CircuitPython root. All necessary CircuitPython libraries are included in the `code/lib` directory.
+
+Note: The `adafruit_displayio_ssd1306` library has been modified at line 57 to increase the scan rate. Should that not work for your display, you can revert the modification or drop in the original from [Adafruit's CircuitPython Bundle](https://github.com/adafruit/Adafruit_CircuitPython_Bundle).
 
 #### Configuration:
 
@@ -82,13 +82,19 @@ For testing purposes, set `loop_light_states = True` in `settings.py` to infinit
 
 #### Constructing:
 
-Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing, and this is my first completed small electronics / CircuitPython project that does much of anything. The Pacman Ghost easily comes apart with four screws on the back and a bit of prying to release the tabs. Stripping out the guts is a couple more screws. My original proof-of-concept version used a Pico W, 5 RGB LEDs for the body, and recycled the white LEDs for the eyes (always on). My second incarnation runs an ESP-C3-13-Kit, uses 9 RGB LEDs for the body, and adds two more RGB LEDs for the eyes. With the eyes I had to scrape the holes and surface a bit for a good-ish fit and hot glued the RGB LEDs in place.
+Building and wiring up your Pacman Ghost is an exercise left up to you. Frankly, I barely know what I'm doing. 
+
+The Pacman Ghost Light shell easily comes apart with four screws on the back and a bit of prying to release the tabs. Stripping out the guts is a couple more screws. My original proof-of-concept version used a [Pico W](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-w), 5 RGB LEDs for the body, and recycled the white LEDs for the eyes (always on). My second incarnation runs an [ESP-C3-13-Kit](https://amzn.to/3wOrRMG), uses 9 RGB LEDs for the body, and adds two more RGB LEDs for the eyes. With the eyes I had to scrape the holes and surface a bit for a good-ish fit and hot glued the RGB LEDs in place.
 
 ![Pacman Ghost under construction](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/0ee3dd5a-2fd9-4adf-ad54-b71aa3c7dfbf)
 
-![Pico W Wiring Diagram](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/d074d741-1e4a-47c7-974c-2534426ed473)
+[A wiring diagram representative of my ESP32-C3 build](https://wokwi.com/projects/392092914913689601):
 
 ![ESP32-C3 Wiring Diagram](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/8ada1c2f-d1fb-48da-a2e1-20f49ff6b936)
+
+[A wiring diagram representative of my Pico W build](https://wokwi.com/projects/392090613383536641):
+
+![Pico W Wiring Diagram](https://github.com/psitem/uptime-kuma-pacman-ghost-light/assets/5166927/d074d741-1e4a-47c7-974c-2534426ed473)
 
 #### My test rig:
 
