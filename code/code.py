@@ -307,9 +307,6 @@ while ( True ):
                     action_Unreachable()
 
             else:
-                resptxt = response.text
-                response.close()
-
                 while(response._received_length > 0):
                     ## HELP monitor_status Monitor Status (1 = UP, 0= DOWN, 2= PENDING, 3= MAINTENANCE)
                     ## monitor_status{monitor_name="name",monitor_type="http",monitor_url="http://mynameisurl",monitor_hostname="null",monitor_port="null"} 1
@@ -329,6 +326,8 @@ while ( True ):
                         else:
                             # print(res.group(1))
                             pass
+
+                response.close()
 
                 print("")
                 print("Loopcount: " + f'{loopcount:>9}')
