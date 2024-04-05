@@ -310,9 +310,12 @@ while ( True ):
                 resptxt = response.text
                 response.close()
 
-                for line in io.StringIO(resptxt):
+                while(response._received_length > 0):
                     ## HELP monitor_status Monitor Status (1 = UP, 0= DOWN, 2= PENDING, 3= MAINTENANCE)
                     ## monitor_status{monitor_name="name",monitor_type="http",monitor_url="http://mynameisurl",monitor_hostname="null",monitor_port="null"} 1
+                    linebytes = response._readto(b"\n")
+                    line = linebytes.decode()
+
                     res = reobj.match(line)
                     if ( res ):
                         if ( res.group(1) == '0' ):
@@ -361,6 +364,8 @@ while ( True ):
             response = None
             requests = None
 
+        line = None
+        linebytes = None
         resptxt = None
         response = None
         requests = None
